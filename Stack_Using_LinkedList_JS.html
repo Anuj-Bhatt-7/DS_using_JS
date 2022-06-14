@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack</title>
+</head>
+<body>
+    <h2>Stack Using Linked list</h2>
+</body>
+<script>
+    class Node{
+        constructor(value){
+            this.value = value;
+            this.next = null;
+        }
+    }
+
+    class Stack{
+        constructor(){
+            this.top = 0;
+        }
+
+        push(key){
+            var node = new Node(key);
+            node.next = this.top;
+            this.top = node;
+        }
+
+        pop(){
+            if(this.top == 0){
+                console.log("Stack Underflowed");
+            }
+            else{
+                console.log("Poped element is : "+this.top.value);
+                this.top = this.top.next;
+            }
+        }
+
+        peek(){
+            if(this.top == 0){
+                console.log("Stack Underflowed");
+            }
+            else{
+                console.log("Peek element is: "+this.top.value)
+            }
+        }
+
+        display(){
+            if(this.top == 0){
+                console.log("Stack Underflowed");
+            }
+            else{
+                console.log("Elements in stack: ")
+                var temp = this.top;
+                while(temp!=0){
+                    console.log(temp.value);
+                    temp = temp.next;
+                }
+            }
+        }
+    }
+
+    var stack = new Stack();
+    stack.push(8);
+    stack.push(19);
+    stack.push(9);
+    stack.push(16);
+    stack.push(21);
+    stack.display();
+    stack.pop();
+    stack.display();
+
+    stack.peek();
+</script>
+</html>

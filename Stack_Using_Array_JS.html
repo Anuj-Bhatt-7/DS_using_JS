@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Using Array</title>
+</head>
+<body>
+    <h2>Stack Using Array</h2>
+</body>
+<script>
+    function pushing(data){
+        if(topHead==totalElements-1){
+            console.log("Stack Overflowed");
+        }
+        else{
+            topHead= topHead+1;
+            Stack[topHead] = data;
+        }
+    }
+
+    function poping(){
+        let element;
+        if(topHead==-1){
+            console.log(" Stack Underflowed");
+        }
+        else{
+            element =  Stack[topHead];
+            topHead=topHead-1;
+            console.log("Poped element is :"+element);
+        }
+    }
+
+    function peek(){
+        if(topHead==-1){
+            console.log(" Stack Underflowed");
+        }
+        else{
+            console.log("Peek element is: "+Stack[topHead]);
+        }
+    }
+
+    function display(){
+        if(topHead ==-1){
+            console.log(" Stack Underflowed");
+        }
+        else{
+            console.log("Elements in Stack: ")
+            for(let i=0;i<=topHead;i++){
+                console.log(Stack[i]);
+            }
+        }
+    }
+
+    let totalElements = 18;
+    let Stack = new Array(totalElements);
+    let topHead = -1;
+    pushing(31);
+    pushing(8);
+    pushing(9);
+    pushing(7);
+    pushing(15);
+    pushing(65);
+    display();
+    poping();
+    display();
+    peek();
+</script>
+</html>

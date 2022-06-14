@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Using Array</title>
+</head>
+
+<body>
+    <h2>Queue Using Array</h2>
+</body>
+<script>
+    let MAX = 100
+    let queue = new Array (MAX);
+    let front = -1;
+    let rear = -1;
+
+    class Queue {
+        Enqueue(value){
+            if (rear ==  MAX - 1) {
+                console.log(" Queue Overflowed");
+            }
+            else if (front == -1 && rear == -1) {
+                front = rear = 0;
+                ob_queue[rear] = value;
+            }   
+            else{
+                rear++;
+                ob_queue[rear] = value;
+            }
+        }
+
+        Dequeue(){
+            if (front ==-1 && rear == -1 ){
+                console.log("Queue Underflowed");
+            }
+            else{
+                console.log("Dequeued element is: ",ob_queue[front]);
+                front++;
+            }
+        }
+
+        peek(){
+            if (front ==-1 && rear == -1 ){
+                console.log("Queue Underflowed");
+            }
+            else{
+                console.log("Peek element is: "+ob_queue[front]);
+            }
+        }
+        
+        printQueue(){
+            let temp = front;
+            if (front ==-1 && rear == -1 ){
+                console.log("Queue Underflowed");
+            }
+            else{
+                console.log("Element in Queue: ");
+                while(temp<=rear){
+                    console.log(ob_queue[temp]);
+                    temp++;
+                }
+            }
+        }
+    }
+
+    let ob_queue = new Queue();
+    console.log('Enqueue Elements')
+    ob_queue.Enqueue(8);
+    ob_queue.Enqueue(4);
+    ob_queue.Enqueue(7);
+    ob_queue.Enqueue(10);
+    console.log("Printing Queue");
+    ob_queue.printQueue();
+    console.log('Dequeue element')
+    ob_queue.Dequeue();
+    console.log("Printing Queue");
+    ob_queue.printQueue();
+    ob_queue.peek();
+</script>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked List</title>
+</head>
+
+<body>
+    <h1>Linked list</h1>
+</body>
+
+<script>
+    class Node {
+        constructor(value) {
+            this.value = value;
+            this.next = null;
+        }
+    }
+    class LinkedList {
+        constructor() {
+            this.next = null;
+            this.size = 0;
+        }
+
+        addNewNode(value) {
+
+            var node = new Node(value);
+            var current;
+
+            if (this.head == null) {
+                this.head = node;
+            }
+            else {
+                current = this.head;
+                while (current.next) {
+                    current = current.next;
+                }
+                current.next = node;
+            }
+            this.size++;
+        }
+         
+
+        deleteNode(val) {
+
+            if (this.head.value === val) {
+                this.head = this.head.next;
+            } else {
+                var previousNode = this.head;
+                var currentNode = previousNode.next;
+                while (currentNode) {
+                    if (currentNode.value === val) {
+                        previousNode.next = currentNode.next;
+                        currentNode = currentNode.next;
+                        break;
+                    } else {
+                        previousNode = currentNode;
+                        currentNode = currentNode.next;
+                    }
+                }
+            }
+        };
+
+
+
+      
+
+
+        printList() {
+            var cur = this.head;
+            var str = " ";
+            while (cur) {
+                str += cur.value + " ";
+                cur = cur.next;
+            }
+            console.log(str);
+        }
+    }
+
+    var list = new LinkedList();
+   
+    list.addNewNode(18);
+    list.addNewNode(48);
+    list.addNewNode(5);
+    list.addNewNode(4);
+    list.addNewNode(72);
+    list.printList();
+
+    list.deleteNode(72);
+    console.log("Node with value 72 deleted")
+    list.printList()
+</script>
+
+</html>

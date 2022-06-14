@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Using Linked list</title>
+</head>
+
+<body>
+    <h2>Queue Using Linked list</h2>
+</body>
+<script>
+    class Node {
+        constructor(data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    class Queue {
+        constructor() {
+            this.front = 0;
+            this.rear = 0;
+        }
+
+        enqueue(value) {
+            let node = new Node(value);
+            node.next = null;
+            if (this.front == 0 && this.rear == 0) {
+                this.front = this.rear = node;
+            }
+            else {
+                this.rear.next = node;
+                this.rear = node;
+            }
+        }
+
+        dequeue(){
+            if (this.front == 0 && this.rear == 0) {
+                console.log(" Queue Underflowed");
+            }
+            else if(this.rear == this.front){
+                console.log("Dequeued element is: "+this.front.data);
+                this.front = this.rear = 0;
+            }
+            else{
+                console.log("Dequeued element is: "+this.front.data);
+                this.front = this.front.next;
+            }
+        }
+
+        peek(){
+            if (this.front == 0 && this.rear == 0) {
+                console.log(" Queue Underflowed");
+            }
+            else{
+                console.log("Peek element is: "+this.front.data);
+            }
+        }
+
+        printQueue() {
+            let temp = this.front;
+            if (this.front == 0 && this.rear == 0) {
+                console.log(" Queue Underflowed");
+            }
+            else {
+                while (temp != null) {
+                    console.log(temp.data)
+                    temp = temp.next;
+                }
+            }
+        }
+    }
+
+    let queue = new Queue();
+    console.log("Enqueue Elements")
+   queue.enqueue(5);
+   queue.enqueue(15);
+   queue.enqueue(23);
+   queue.enqueue(65);
+   queue.enqueue(14);
+   queue.enqueue(95);
+   console.log("Printing Queue elements")
+   queue.printQueue()
+  
+   queue.dequeue()
+   console.log("Printing Queue elements")
+   queue.printQueue()
+
+   queue.peek()
+
+</script>
+
+</html>
