@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinHeap</title>
+</head>
+<body>
+    <h2>Min heap</h2>
+</body>
+<script>
+    function heapify(nodeArray,i){
+        let size = nodeArray.length;
+        let small = i;
+        let left = 2*i +1;
+        let right = 2*i +2;
+
+        if(left<size && nodeArray[small]>nodeArray[left]){
+            small = left;
+        }
+        if(right<size && nodeArray[small]>nodeArray[right]){
+            small = right;
+        }
+        if(small!=i){
+            let temp = nodeArray[i];
+            nodeArray[i] = nodeArray[small];
+            nodeArray[small] = temp;
+            heapify(nodeArray,i);
+        }
+    }
+
+    function insertNode(nodeArray,key){
+        let size = nodeArray.length;
+        if (size == 0){
+            nodeArray.push(key);
+        }
+        else{
+            nodeArray.push(key);
+            for(let i=size-1;i>=0;i--){
+                heapify(nodeArray,i);
+            }
+        }
+    }
+
+    function deleteNode(nodeArray,value){
+        console.log("After deleting an element: "+value)
+        let size = nodeArray.length;
+        let i=0;
+        let flag = 0;
+        for(i=0;i<size;i++){
+            if(nodeArray[i] == value){
+                flag++;
+                break;
+            }
+        }
+        if(flag==0){
+            console.log(value+" is not present in heap!");
+            return;
+        }
+        let temp = nodeArray[i];
+        nodeArray[i] = nodeArray[size-1];
+        nodeArray[size-1] = temp;
+        nodeArray.pop(value);
+        for(let i=size;i>=0;i--){
+            heapify(nodeArray,i);
+        }
+    }
+
+    function displayMin(nodeArray){
+        console.log("Min-heap nodeArrayay is: ");
+        let size = nodeArray.length;
+        for(let i=0;i<size;++i){
+            console.log(nodeArray[i]);
+        }
+    }
+
+    let nodeArray = new Array();
+    
+    insertNode(nodeArray,36);
+    insertNode(nodeArray,12);
+    insertNode(nodeArray,92);
+    insertNode(nodeArray,1);
+    insertNode(nodeArray,50);
+    insertNode(nodeArray,80);
+    insertNode(nodeArray,100);
+    displayMin(nodeArray);
+
+    deleteNode(nodeArray,12);
+    displayMin(nodeArray);
+
+    deleteNode(nodeArray,66);
+    displayMinMin(nodeArray);
+</script>
+</html>
